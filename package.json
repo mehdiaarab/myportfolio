@@ -1,0 +1,24 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Mehdi Aarab's Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehdiaarab/myportfolio.git"
+  },
+  "keywords": [
+    "Portfolio",
+    "wordpress",
+    "theme"
+  ],
+  "author": "Mehdi Aarab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mehdiaarab/myportfolio/issues"
+  },
+  "homepage": "https://github.com/mehdiaarab/myportfolio#readme"
+}
