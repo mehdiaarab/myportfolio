@@ -1,2 +1,2 @@
 # myportfolio
-A simple theme wordpress theme that i'm developing for my Portfolio
+A simple wordpress theme that i'm developing for my Portfolio.
