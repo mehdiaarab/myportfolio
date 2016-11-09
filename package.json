@@ -20,5 +20,21 @@
   "bugs": {
     "url": "https://github.com/mehdiaarab/myportfolio/issues"
   },
-  "homepage": "https://github.com/mehdiaarab/myportfolio#readme"
+  "homepage": "https://github.com/mehdiaarab/myportfolio#readme",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.1.1"
+  },
+  "dependencies": {}
 }

@@ -1,2 +1,11 @@
 .sass-cache/
 *.css.map
+node_modules
+npm-debug.log
+*.css
+js/app.js
+.idea
+build/**/images/*
+build/**/fonts/
+.DS_Store
+.tmp
