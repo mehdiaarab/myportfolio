@@ -1,3 +1,4 @@
+/* setting proper plugins */
 var gulp       = require('gulp'),
     gulputil   = require('gulp-util'),
     browserify = require('gulp-browserify'),
@@ -5,10 +6,11 @@ var gulp       = require('gulp'),
     uglify     = require('gulp-uglify'),
     connect    = require('gulp-connect'),
     minifyHTML = require('gulp-minify-html'),
-    concat     = require('gulp-concat'),
-    sass       = require('gulp-sass');
+    concat     = require('gulp-concat'), // bundle js files into one files
+    sass       = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer');
 
-
+/* setting variables */
 var env,
     jsSources,
     sassSources,
@@ -34,7 +36,7 @@ sassSources = ["components/sass/style.scss"];
 htmlSources = [outputDir + '*.html'];
 
 
-/* copylibs */
+/* copy fontawesome and bootstrap files to outputDir 'build' or 'prod' */
 gulp.task('movecss', function () {
   return gulp.src([
       "./node_modules/font-awesome/css/font-awesome.min.css",
@@ -43,6 +45,7 @@ gulp.task('movecss', function () {
     .pipe(gulp.dest(outputDir + 'css'));
 });
 
+/* copy bootstrap js files to outputDir*/
 gulp.task('movejs', function () {
   return gulp.src([
       "./node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -50,6 +53,7 @@ gulp.task('movejs', function () {
     .pipe(gulp.dest(outputDir + 'js'));
 });
 
+/* copy fonts to outputDir */
 gulp.task('movefonts', function () {
   return gulp.src([
       "./node_modules/font-awesome/fonts/*"
@@ -57,9 +61,7 @@ gulp.task('movefonts', function () {
     .pipe(gulp.dest(outputDir + 'fonts'));
 });
 
-
-
-
+/* require and bundle js files into one file app.js */
 gulp.task('js', function() {
   gulp.src(jsSources)
     .pipe(concat('app.js'))
@@ -69,20 +71,22 @@ gulp.task('js', function() {
     .pipe(gulp.dest(outputDir + 'js'))
 });
 
+/* handle sass files */
 gulp.task('sass', function () {
   return gulp.src(sassSources)
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(gulp.dest(outputDir + 'css'));
 });
 
-
+/* setting watch rules : watch for sass & js & html files and trigger a task for each change */
 gulp.task('watch', function() {
   gulp.watch(jsSources, ['js']);
   gulp.watch(['components/sass/*.scss', 'components/sass/*/*.scss'], ['sass']);
   gulp.watch('build/dev/*.html', ['html']);
 });
 
-
+/* server launch */
 gulp.task('connect', function() {
   connect.server({
     root: outputDir,
@@ -103,4 +107,6 @@ gulp.task('move', function() {
   .pipe(gulpif(env === 'prod', gulp.dest(outputDir+'images')))
 });
 
+
+/* the default tast, first task called */
 gulp.task('default', ['watch', 'html', 'js','sass', 'move', 'connect','movecss','movejs','movefonts']);
